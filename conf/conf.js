@@ -3,8 +3,7 @@
  */
 var  conf = {
     debug: false,
-    host: 'https://fireflyread.applinzi.com'
-    //host: 'localhost'
+    host: ''
 }
 
 module.exports = {

@@ -10,9 +10,9 @@ App({
       url: 'pages/index/index'
     })
     wx.setStorageSync('logs', logs)
-    WebService.wxLogin(function(){
-    		console.log('login');
-    });
+//  WebService.wxLogin(function(){
+//  		console.log('login');
+//  });
   },
   globalData: {
     userInfo: null,

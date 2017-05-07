@@ -59,7 +59,6 @@ var WebService = {
 			Weixin.getUserInfo({
 				withCredentials: false,
 				success: function(res) {
-					console.log('获取用户信息' + res.userInfo)
 					Weixin.setStorageSync('userInfo', res.userInfo)
 					typeof callback == "function" && callback(res.userInfo)
 				},

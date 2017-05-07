@@ -30,15 +30,13 @@ Page({
                 try {
                     var ss_id = wx.getStorageSync('ss_id')
                     WebService.apiPost({
-                    	url: 'https://fireflyread.applinzi.com/wxapp/record.php?action=getRecord&ss_id=' + ss_id,
+                    	url: conf.host + '/wxapp/record.php?action=getRecord&ss_id=' + ss_id,
                     	data: {},
                     success: function (res) {
-                            console.log(res.data)
                             self.setData({
                                 hasRecord: res.data.hasRecord
                             })
                             if (res.data.success === 1) {
-                                console.log(res.data)
                                 self.setData({
                                     count: res.data.count
                                 })
@@ -71,12 +69,10 @@ Page({
     	var self = this;
     		var ss_id = wx.getStorageSync('ss_id');
     		WebService.apiPost({
-    			url : 'https://fireflyread.applinzi.com/wxapp/record.php?action=getmygain&ss_id=' + ss_id,
+    			url : conf.host + '/wxapp/record.php?action=getmygain&ss_id=' + ss_id,
     			data:{},
     			success: function (res) {
-               console.log(res.data)
                if (res.data.success === 1) {
-                   console.log(res.data)
                    self.setData({
                    bookcount: res.data.bookSum,
                    exp: res.data.expSum,
@@ -105,14 +101,13 @@ Page({
             var bookIdea = data.bookIdea
             var ss_id = wx.getStorageSync('ss_id')
             WebService.apiPost({
-            		url: 'https://fireflyread.applinzi.com/wxapp/record.php?action=postRecord&ss_id=' + ss_id,
+            		url: conf.host + '/wxapp/record.php?action=postRecord&ss_id=' + ss_id,
             		data: {
                     readTime: time,
                     bookName: bookName,
                     bookIdea: bookIdea
                },
                success: function (res) {
-                    console.log(res.data)
                     if (res.data.success === 1) {
                         //打卡成功，页面
                         console.log('打卡成功')
@@ -153,8 +148,5 @@ Page({
             self.getUserInfo();
 		});
 
-    },
-    imageError: function (e) {
-        console.log('image error', e.detail.errMsg)
     }
 })
