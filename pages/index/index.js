@@ -9,8 +9,12 @@ Page({
         count: 0,
         userInfo: {},
         src: '',
-        shareData: {}
-
+        shareData: {},
+        readSlide: '120分钟',
+        readTime: 120,
+        exp: 0,
+        bookcount: 0,
+        daycount: 0
     },
     onShareAppMessage: function () {
         return this.data.shareData
@@ -92,7 +96,6 @@ Page({
     },
     //事件处理函数
     submitRecord: function (e) {
-        console.log('submit start...')
         var self = this
         let data = e.detail.value
         try {
@@ -111,6 +114,11 @@ Page({
                     if (res.data.success === 1) {
                         //打卡成功，页面
                         console.log('打卡成功')
+                         wx.showToast({
+                              title: '打卡成功',
+                              icon: 'success',
+                              duration: 2000
+                         })
                         self.setData({
                             hasRecord: true,
                             bookDate: res.data.date,
@@ -119,7 +127,11 @@ Page({
                             bookIdea: bookIdea
                         })
                     } else {
-						alert('打卡失败');
+						 wx.showToast({
+                             title: res.data.msg,
+                             icon: 'fail',
+                             duration: 2000
+                         })
                     }
                 },
                 fail: function (res) {
@@ -138,6 +150,16 @@ Page({
 	        	    userInfo:res
 	        });
       });
+    },
+    readSlidChange: function(e){
+    	var readSlide = e.detail.value || 0;
+    	var hour = parseInt(readSlide / 60);
+    	var min = (readSlide % 60);
+    	var readSlideStr = (hour === 0 ? '' : (hour + '小时')) + (min === 0 ? '' :(min + '分钟'));
+        this.setData({
+           readSlide : readSlideStr,
+           readTime: readSlide
+        });
     },
     onLoad: function () {
         //todo 判断用户是否签到
