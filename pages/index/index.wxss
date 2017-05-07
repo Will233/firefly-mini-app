@@ -41,6 +41,15 @@
   background: #2f9833;
   color: #fff;
 }
+.readtime-section{
+	margin-top:10px;
+}
+.readtime-section .readtime{
+ 	color:#666;
+}
+slide.readtime{
+ margin: 10px 0px;
+}
 
 .record-wrap {
   width: 100%;
