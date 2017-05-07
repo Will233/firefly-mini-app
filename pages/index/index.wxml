@@ -1,0 +1,41 @@
+
+<!--index.wxml-->
+<view class="container">
+  <view bindtap="bindViewTap" class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    <view class="profile-column-wrap">
+      <view class="profile-item fl-column-item">
+        <text class="item-key-txt">打卡天数</text>
+        <text class="item-val-txt">{{daycount}}天</text>
+      </view>
+      <view class="profile-item fc-column-item">
+        <text class="item-key-txt">累计读书</text>
+        <text class="item-val-txt">{{bookcount}}本</text>
+      </view>
+      <view class="profile-item fr-column-item">
+        <text class="item-key-txt">获得经验</text>
+        <text class="item-val-txt">{{exp}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{hasRecord}}" class="data-wrap">
+    <text class="record-day">{{bookDate}} <text class="frombook-txt">——{{bookName}}</text></text>
+    <text class="content-txt">{{bookIdea}}</text>  
+  </view>
+    <view wx:else class="sign-wrap">
+    <form bindsubmit="submitRecord" bindreset="resetForm">
+      <view class="input-wrap">
+        <input id="readTime" name="readTime" maxlength="4" type="number" placeholder="输入读书时间（分钟）" />
+      </view>
+      <view class="input-wrap">
+        <input id="bookName" name="bookName" maxlength="50" type="text" placeholder="输入书名" />
+      </view>
+      <view class="textarea-wrap">
+        <textarea id="bookIdea" name="bookIdea" maxlength="250" placeholder="输入读书心得" />
+      </view>
+      <button form-type="submit" class="signin-btn ">立即打卡</button>
+    </form>
+  </view>
+</view>
