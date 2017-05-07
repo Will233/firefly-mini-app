@@ -9,10 +9,16 @@ var WebService = {
 			if(Weixin) {
 				Weixin.checkSession({
 					success: function() {
-						callback();
+						var ss_id = Weixin.getStorageSync('ss_id')
+						if (ss_id){
+						   callback();
+						} else {
+							WebService.wxLogin(callback);
+						}
+						
 					},
 					fail: function() {
-						wxLogin(callback);
+						WebService.wxLogin(callback);
 					}
 				})
 			} else {
