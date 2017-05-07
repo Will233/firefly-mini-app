@@ -117,6 +117,7 @@ slide.readtime{
   width: 100%;
   height: 300rpx;
   background: #ccc;
+  padding: 10px;
 }
 
 .data-wrap text {
@@ -128,7 +129,7 @@ slide.readtime{
 
 .data-wrap text.record-day {
   position: absolute;
-  left: 60rpx;
+  padding-left: 30px;
   top: 40rpx;
   text-align: left;
   width: 100%;
@@ -139,7 +140,14 @@ slide.readtime{
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
 }
-
+.error-wrap{
+   width:100%;
+   background: #e64340;
+   color: #fff;
+   padding:5px 0;
+   text-align:center;
+   font-size:.7rem;
+}
 .data-wrap text.content-txt {
   text-align: center;
   display: -webkit-box;
@@ -157,9 +165,11 @@ slide.readtime{
 }
 
 .data-wrap text.frombook-txt {
+  position: absolute;
+  top: 40rpx; 
   color: #555;
   font-size: 0.7rem;
-  padding: .15rem 0;
+  padding-right: 30px;
   line-height: 1rem;
   text-align: right;
   overflow: hidden;
@@ -211,7 +221,7 @@ slide.readtime{
     border-bottom: solid 1px #ccc;
 }
 .sign-wrap .input-wrap input,textarea{
-    color: #2f9833;
+    color: #333;
 }
 .sign-wrap .textarea-wrap{
     margin: 20rpx 0;
