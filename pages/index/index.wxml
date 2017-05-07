@@ -19,16 +19,23 @@
       </view>
     </view>
   </view>
-
   <view wx:if="{{hasRecord}}" class="data-wrap">
-    <text class="record-day">{{bookDate}} <text class="frombook-txt">——{{bookName}}</text></text>
-    <text class="content-txt">{{bookIdea}}</text>  
+    <text class="record-day">{{bookDate}}
+      <text class="frombook-txt">——{{bookName}}</text>
+    </text>
+    <text class="content-txt">{{bookIdea}}</text>
   </view>
-    <view wx:else class="sign-wrap">
+  <view wx:else class="sign-wrap">
     <form bindsubmit="submitRecord" bindreset="resetForm">
-      <view class="input-wrap">
-        <input id="readTime" name="readTime" maxlength="4" type="number" placeholder="输入读书时间（分钟）" />
+      <view class="readtime-section">
+        <text class="readtime">读书时间{{readSlide}}</text>
+        <view class="body-view">
+          <slider id="readTime" name="readTime" class="readtime" style="margin:10px 0px 5px 0px;" value="{{readTime}}" bindchange="readSlidChange" min="10" step="10" max="360"/>
+        </view>
       </view>
+      <!--<view class="input-wrap">
+        <input id="readTime" name="readTime" maxlength="4" type="number" placeholder="输入读书时间（分钟）" />
+      </view>-->
       <view class="input-wrap">
         <input id="bookName" name="bookName" maxlength="50" type="text" placeholder="输入书名" />
       </view>
