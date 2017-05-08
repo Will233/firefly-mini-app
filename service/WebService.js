@@ -8,8 +8,9 @@ var WebService = {
 	wxCheckSession: function(callback) {
 		if(Weixin) {
 			var ss_id = Weixin.getStorageSync('ss_id')
+      console.log(ss_id);
 			if(ss_id) {
-				callback();
+        typeof callback == 'function' && callback();
 			} else {
 				WebService.wxLogin(callback);
 			}
@@ -34,11 +35,11 @@ var WebService = {
 						}, // 设置请求的 header
 						success: function(res) {
 							Weixin.setStorageSync('ss_id', res.data.ss_id);
-							callback(null, res.data.ss_id);
+							typeof callback == 'function' && callback(null, res.data.ss_id);
 						},
 						fail: function(res) {
 							console.log('登录失败，将无法正常使用开放接口等服务', res)
-							callback(res)
+              typeof callback == 'function' && callback(res)
 						}
 					});
 				},

@@ -10,6 +10,11 @@ App({
       url: 'pages/index/index'
     })
     wx.setStorageSync('logs', logs)
+
+    var ss_id = wx.getStorageSync('ss_id')
+    if (ss_id){
+      WebService.wxLogin();
+    }
   },
   globalData: {
     userInfo: null,
